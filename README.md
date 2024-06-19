@@ -10,8 +10,8 @@ Este projeto é uma prova de conceito (POC) para um aplicativo de câmera desenv
   * `IRepositoryCamera` e `RepositoryCamera`
 * **Adaptadores:**
   * `ZXFileAdapter`
-  * `PriewCameraZaurisAdapter`
-  * `CameraControllerZaurisAdapter`
+  * `PriewCameraZAdapter`
+  * `CameraControllerZAdapter`
 * **Controlador:**
   * `CameraPageController`
 * **UI:**
@@ -21,7 +21,7 @@ Este projeto é uma prova de conceito (POC) para um aplicativo de câmera desenv
 
 * **Single Responsibility Principle (SRP):** Cada classe tem uma única responsabilidade. Por exemplo, `CameraService` é responsável apenas pelas operações da câmera, enquanto `CameraPageController` gerencia a lógica de apresentação.
 * **Open/Closed Principle (OCP):** O código está aberto para extensão, mas fechado para modificação. Podemos adicionar novos adaptadores ou serviços sem modificar os existentes.
-* **Liskov Substitution Principle (LSP):** As classes derivadas ou adaptadas podem ser usadas como substitutas das suas classes base. Os adaptadores garantem que os tipos personalizados (`ZXFile`, `PriewCameraZauris`, `CameraControllerZauris`) possam ser usados no lugar dos tipos padrão.
+* **Liskov Substitution Principle (LSP):** As classes derivadas ou adaptadas podem ser usadas como substitutas das suas classes base. Os adaptadores garantem que os tipos personalizados (`ZXFile`, `PriewCameraZ`, `CameraControllerZ`) possam ser usados no lugar dos tipos padrão.
 * **Interface Segregation Principle (ISP):** Interfaces específicas foram criadas (`ICamera` e `IRepositoryCamera`), evitando a criação de interfaces grandes e não específicas.
 * **Dependency Inversion Principle (DIP):** A dependência no `CameraService` é invertida usando a interface `ICamera`, permitindo a injeção de dependência e facilitando testes.
 
@@ -53,8 +53,8 @@ Este projeto é uma prova de conceito (POC) para um aplicativo de câmera desenv
 │   │   └── camera_page_controller.dart
 │   ├── models/
 │   │   ├── zxfile.dart
-│   │   ├── priew_camera_zauris.dart
-│   │   ├── camera_controller_zauris.dart
+│   │   ├── priew_camera_Z.dart
+│   │   ├── camera_controller_Z.dart
 │   ├── services/
 │   │   ├── i_camera.dart
 │   │   ├── camera_service.dart
@@ -62,8 +62,8 @@ Este projeto é uma prova de conceito (POC) para um aplicativo de câmera desenv
 │   │   ├── repository_camera.dart
 │   ├── adapters/
 │   │   ├── zxfile_adapter.dart
-│   │   ├── priew_camera_zauris_adapter.dart
-│   │   ├── camera_controller_zauris_adapter.dart
+│   │   ├── priew_camera_Z_adapter.dart
+│   │   ├── camera_controller_Z_adapter.dart
 ├── camera_page.dart
 </code></div></div></pre>
 
@@ -74,12 +74,12 @@ Este projeto é uma prova de conceito (POC) para um aplicativo de câmera desenv
   * `IRepositoryCamera` define as operações do repositório de câmera, e `RepositoryCamera` implementa essas operações utilizando `ICamera`.
 * **Adaptadores:**
   * `ZXFileAdapter`: Converte `XFile` para `ZXFile`.
-  * `PriewCameraZaurisAdapter`: Converte `CameraPreview` para `PriewCameraZauris`.
-  * `CameraControllerZaurisAdapter`: Converte `CameraController` para `CameraControllerZauris`.
+  * `PriewCameraZAdapter`: Converte `CameraPreview` para `PriewCameraZ`.
+  * `CameraControllerZAdapter`: Converte `CameraController` para `CameraControllerZ`.
 * **Controlador:**
   * `CameraPageController` gerencia o estado da câmera e utiliza os adaptadores para trabalhar com os tipos personalizados.
 * **UI:**
-  * `CameraPage` utiliza `ChangeNotifierProvider` para fornecer o controlador à árvore de widgets e renderiza a visualização da câmera utilizando `PriewCameraZauris`.
+  * `CameraPage` utiliza `ChangeNotifierProvider` para fornecer o controlador à árvore de widgets e renderiza a visualização da câmera utilizando `PriewCameraZ`.
 
 ### Conclusão
 

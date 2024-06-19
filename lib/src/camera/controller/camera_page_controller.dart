@@ -1,14 +1,17 @@
-import 'package:camera_poc/core/shared/services/camera/library/camera_controller_zauris.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_flash_mode.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_xfile.dart';
 import 'package:camera_poc/src/camera/repository/camera_repository.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/shared/services/camera/library/z_camera_controller.dart';
+
 class CameraPageController extends ChangeNotifier {
   final IRepositoryCamera _repositoryCamera;
   CameraPageController(this._repositoryCamera);
-  CameraControllerZauris? _cameraController;
-  CameraControllerZauris? get cameraController => _cameraController;
+  ZCameraController? _cameraController;
+  ZCameraController? get cameraController => _cameraController;
+  ZFlashMode _flashMode = ZFlashMode.off;
+  ZFlashMode get flashMode => _flashMode;
   ZXFile? _image;
   ZXFile? get image => _image;
 
@@ -24,14 +27,18 @@ class CameraPageController extends ChangeNotifier {
   }
 
   Future<void> setFlash(ZFlashMode mode) async {
+    changesFlash(mode);
     await _repositoryCamera.setFlash(mode);
   }
-
 
   @override
   void dispose() {
     _repositoryCamera.dispose();
     super.dispose();
   }
-}
 
+  void changesFlash(ZFlashMode mode) {
+    _flashMode = mode;
+    notifyListeners();
+  }
+}

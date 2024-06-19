@@ -4,7 +4,7 @@ import 'package:camera/camera.dart';
 
 import 'package:camera_poc/core/shared/services/camera/adapters/z_flash_mode_adapter.dart';
 import 'package:camera_poc/core/shared/services/camera/adapters/z_xfile_adapter.dart';
-import 'package:camera_poc/core/shared/services/camera/library/camera_controller_zauris.dart';
+import 'package:camera_poc/core/shared/services/camera/library/z_camera_controller.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_camera_exceptiom.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_flash_mode.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_xfile.dart';
@@ -12,21 +12,21 @@ import 'package:camera_poc/core/shared/services/camera/library/z_xfile.dart';
 import 'i_camera.dart';
 
 class CameraService implements ICamera {
-  CameraControllerZauris? _cameraController;
+  ZCameraController? _cameraController;
 
   @override
-  CameraControllerZauris? get cameraController {
-    if (_cameraController != null)  return _cameraController!;
-    
+  ZCameraController? get cameraController {
+    if (_cameraController != null) return _cameraController!;
+
     return null;
   }
 
   @override
-  Future<CameraControllerZauris> initialize() async {
+  Future<ZCameraController> initialize() async {
     final cameras = await availableCameras();
     final secondCamera = cameras[1];
 
-    _cameraController = CameraControllerZauris(
+    _cameraController = ZCameraController(
       secondCamera,
       ResolutionPreset.high,
     );
@@ -58,7 +58,7 @@ class CameraService implements ICamera {
       }
     }
     if (file == null) throw CameraException('-1', 'Erro: retornada NULL');
-    return ZXFileAdapter.convet(file);
+    return ZXFileAdapter.toZXFile(file);
   }
 
   @override
@@ -80,10 +80,3 @@ class CameraService implements ICamera {
     }
   }
 }
-
-
-
-
-
-
-

@@ -1,11 +1,11 @@
-import 'package:camera_poc/core/shared/services/camera/library/camera_controller_zauris.dart';
+import 'package:camera_poc/core/shared/services/camera/library/z_camera_controller.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_camera_exceptiom.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_flash_mode.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_xfile.dart';
 import 'package:camera_poc/core/shared/services/camera/i_camera.dart';
 
 abstract class IRepositoryCamera {
-  Future<CameraControllerZauris> initialize();
+  Future<ZCameraController> initialize();
   Future<ZXFile?> takePicture();
   Future<void> setFlash(ZFlashMode mode);
   void dispose();
@@ -18,7 +18,7 @@ class RepositoryCamera implements IRepositoryCamera {
   RepositoryCamera(this._cameraService);
 
   @override
-  Future<CameraControllerZauris> initialize() async {
+  Future<ZCameraController> initialize() async {
     try {
       return await _cameraService.initialize();
     } on IZCameraException catch (err) {

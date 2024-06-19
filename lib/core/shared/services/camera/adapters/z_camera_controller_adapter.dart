@@ -1,14 +1,13 @@
 import 'package:camera/camera.dart';
-import 'package:camera_poc/core/shared/services/camera/library/camera_controller_zauris.dart';
+import 'package:camera_poc/core/shared/services/camera/library/z_camera_controller.dart';
 
 class ZCameraControllerAdapter {
-  static CameraControllerZauris toControllerZauris(
-      CameraController controller) {
-    return CameraControllerZauris(
+  static ZCameraController toControllerZ(CameraController controller) {
+    return ZCameraController(
         controller.description, controller.resolutionPreset);
   }
-    static CameraController toController(
-      CameraControllerZauris controller) {
+
+  static CameraController toController(ZCameraController controller) {
     return CameraController(
         controller.description, controller.resolutionPreset);
   }

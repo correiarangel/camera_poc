@@ -1,5 +1,4 @@
-import 'package:camera_poc/core/shared/services/camera/library/priew_camera_zauris.dart';
-import 'package:camera_poc/core/shared/services/camera/camera_service.dart';
+import 'package:camera_poc/core/shared/services/camera/library/z_preview_camera.dart';
 import 'package:camera_poc/src/camera/controller/camera_page_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +42,7 @@ class ZPreviewWidget extends StatelessWidget {
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           //  CameraPreview(ZCameraControllerAdapter.toController( cameraController!)),
-          PriewCameraZauris(cameraController),
+          ZPreviewCamera(cameraController),
           ZTakePicture(
             controller: cameraPageController,
           )

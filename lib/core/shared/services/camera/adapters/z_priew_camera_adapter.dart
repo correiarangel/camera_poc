@@ -1,9 +1,8 @@
-
 import 'package:camera/camera.dart';
-import 'package:camera_poc/core/shared/services/camera/library/priew_camera_zauris.dart';
+import 'package:camera_poc/core/shared/services/camera/library/z_preview_camera.dart';
 
 class ZPriewCameraAdapter {
- static PriewCameraZauris  convet(CameraPreview priew) {
-    return PriewCameraZauris(priew.controller);
+  static ZPreviewCamera toCameraZ(CameraPreview priew) {
+    return ZPreviewCamera(priew.controller);
   }
 }
