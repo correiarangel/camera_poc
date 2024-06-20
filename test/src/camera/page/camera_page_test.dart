@@ -1,12 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_camera_controller.dart';
-import 'package:camera_poc/core/shared/services/camera/library/z_flash_mode.dart';
 import 'package:camera_poc/core/shared/services/camera/library/z_xfile.dart';
-import 'package:camera_poc/src/camera/components/z_preview_widget.dart';
 import 'package:camera_poc/src/camera/controller/camera_page_controller.dart';
-import 'package:camera_poc/src/camera/page/camera_page.dart';
 import 'package:camera_poc/src/camera/repository/camera_repository.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
